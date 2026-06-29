@@ -85,16 +85,16 @@ NEXT_PUBLIC_SITE_URL=      # https://novasense.vercel.app
 
 ## Phase Roadmap
 
-- [ ] Bootstrap — CLAUDE.md
-- [ ] Phase 0 — Setup & technical foundation
-- [ ] Phase 1 — Design System & Dark Mode
-- [ ] Phase 2 — Page structure & core sections
-- [ ] Phase 3 — Technical SEO & Performance
-- [ ] Phase 4 — Form + Webhook + Tracking + Toast
-- [ ] Phase 5 — Advanced animation, Scrollytelling & Parallax
-- [ ] Phase 6 — Mini E-commerce
-- [ ] Phase 7 — Product advisory chatbot
-- [ ] Phase 8 — Full QA, audit & Deploy
+- [x] Bootstrap — CLAUDE.md
+- [x] Phase 0 — Setup & technical foundation
+- [x] Phase 1 — Design System & Dark Mode
+- [x] Phase 2 — Page structure & core sections
+- [x] Phase 3 — Technical SEO & Performance
+- [x] Phase 4 — Form + Webhook + Tracking + Toast
+- [x] Phase 5 — Advanced animation, Scrollytelling & Parallax
+- [x] Phase 6 — Mini E-commerce
+- [x] Phase 7 — Product advisory chatbot
+- [x] Phase 8 — Full QA, audit & Deploy
 
 ---
 
