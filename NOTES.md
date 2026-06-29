@@ -25,3 +25,6 @@
 - Phase 1: Replace placeholder metadata in layout.tsx
 - Phase 1: Adapt design token config to Tailwind v4 CSS-first API (no tailwind.config.ts)
 - Phase 3: Remove explanatory comment from next.config.ts (resolved in Phase 3)
+- Phase 7: Streaming chat response — implemented as non-streaming for reliability; add streaming (ReadableStream/SSE) if needed
+- Phase 6: WishlistDrawer / RecentlyViewed panel — ProductCard tracks both via stores but no dedicated UI drawer; add if needed
+- Phase 4: /api/track endpoint missing — analytics.ts calls sendBeacon('/api/track') which fails silently; add a real track Route Handler if analytics forwarding is required
