@@ -3,6 +3,7 @@ import { Geist } from 'next/font/google'
 import { Sora } from 'next/font/google'
 import { THEME_SCRIPT } from '@/lib/theme'
 import { ToastProvider } from '@/components/ui/Toast'
+import { AuroraBackground } from '@/components/sections/AuroraBackground'
 import { ChatWidget } from '@/components/chatbot/ChatWidget'
 import './globals.css'
 
@@ -73,7 +74,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
-      <body className={`${geist.variable} ${sora.variable} font-sans antialiased bg-(--color-bg) text-(--color-text-primary)`}>
+      <body className={`${geist.variable} ${sora.variable} font-sans antialiased bg-(--color-canvas) text-(--color-text-primary)`}>
+        <AuroraBackground />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -13,6 +13,13 @@
   --color-accent: rgb(99 102 241);
   --color-accent-hover: rgb(79 82 221);
   --color-accent-subtle: rgb(238 242 255);
+  --color-canvas: rgb(251 251 253);
+  --color-violet: rgb(139 92 246);
+  --color-cyan: rgb(34 211 238);
+  --color-glass: rgb(255 255 255 / 0.7);
+  --color-glass-border: rgb(15 23 42 / 0.06);
+  --shadow-glass: 0 8px 32px 0 rgb(15 23 42 / 0.08);
+  --shadow-glow: 0 0 48px 0 rgb(99 102 241 / 0.35);
 
   --radius-sm: 0.375rem;
   --radius-md: 0.75rem;
@@ -38,17 +45,34 @@
   --color-accent: rgb(129 140 248);
   --color-accent-hover: rgb(99 102 241);
   --color-accent-subtle: rgb(30 32 80);
+  --color-canvas: rgb(7 8 13);
+  --color-glass: rgb(255 255 255 / 0.04);
+  --color-glass-border: rgb(255 255 255 / 0.08);
+  --shadow-glass: 0 8px 32px 0 rgb(0 0 0 / 0.5);
+  --shadow-glow: 0 0 64px 0 rgb(99 102 241 / 0.45);
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4);
   --shadow-md: 0 4px 16px 0 rgb(0 0 0 / 0.3);
   --shadow-lg: 0 8px 40px 0 rgb(0 0 0 / 0.4);
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: var(--color-canvas);
   color: var(--color-text-primary);
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
 ::selection {
   background-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+
+.text-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-accent),
+    var(--color-violet) 50%,
+    var(--color-cyan)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
