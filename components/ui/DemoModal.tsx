@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { X, Play } from 'lucide-react'
 
@@ -10,13 +10,25 @@ interface DemoModalProps {
 }
 
 export function DemoModal({ open, onClose }: DemoModalProps) {
+  const closeRef = useRef<HTMLButtonElement>(null)
+
   useEffect(() => {
     if (!open) return
+    const prior = document.activeElement as HTMLElement | null
+    closeRef.current?.focus()
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') {
+        onClose()
+      } else if (e.key === 'Tab') {
+        e.preventDefault()
+        closeRef.current?.focus()
+      }
     }
     document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      prior?.focus()
+    }
   }, [open, onClose])
 
   if (!open) return null
@@ -28,9 +40,10 @@ export function DemoModal({ open, onClose }: DemoModalProps) {
       aria-label="Product demo"
       className="fixed inset-0 z-[70] flex items-center justify-center p-4"
     >
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div aria-hidden="true" className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
       <div className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-(--color-glass-border) bg-(--color-bg-card) shadow-2xl">
         <button
+          ref={closeRef}
           onClick={onClose}
           aria-label="Close demo"
           className="absolute right-3 top-3 z-10 rounded-md p-1.5 text-(--color-text-muted) transition-colors hover:text-(--color-text-primary)"

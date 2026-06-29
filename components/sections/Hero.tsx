@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { Magnetic } from '@/components/motion/Magnetic'
@@ -12,6 +12,7 @@ import { Play, ShoppingBag } from 'lucide-react'
 
 export function Hero() {
   const [demoOpen, setDemoOpen] = useState(false)
+  const closeDemo = useCallback(() => setDemoOpen(false), [])
 
   return (
     <section className="relative overflow-hidden pt-20 pb-24 sm:pt-28">
@@ -54,7 +55,7 @@ export function Hero() {
           </Reveal>
         </div>
       </Container>
-      <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} />
+      <DemoModal open={demoOpen} onClose={closeDemo} />
     </section>
   )
 }
