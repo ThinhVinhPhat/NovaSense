@@ -35,7 +35,7 @@ export function ParticleField({ className, count = 40 }: ParticleFieldProps) {
       if (!c) return
       c.width = c.clientWidth * dpr
       c.height = c.clientHeight * dpr
-      ctx!.scale(dpr, dpr)
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
 
     function draw() {
