@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { ThemeToggle } from '@/components/ThemeToggle'
+import { CartDrawer } from '@/components/ecommerce/CartDrawer'
 
 const navLinks = [
   { href: '#features', label: 'Features' },
@@ -32,6 +33,7 @@ export function Header() {
           </nav>
           <div className="flex items-center gap-2">
             <ThemeToggle />
+            <CartDrawer />
             <Button size="sm" className="hidden sm:inline-flex">
               Pre-order
             </Button>
