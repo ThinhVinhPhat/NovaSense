@@ -7,9 +7,62 @@ import './globals.css'
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 const sora = Sora({ subsets: ['latin'], variable: '--font-sora', weight: ['400', '600', '700', '800'] })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://novasense.vercel.app'
+
 export const metadata: Metadata = {
-  title: 'NovaSense — The Future of Smart Living',
-  description: 'AI-powered smart hub that connects and controls your entire home ecosystem by voice or app.',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'NovaSense — The Future of Smart Living',
+    template: '%s | NovaSense',
+  },
+  description:
+    'NovaSense is an AI-powered smart hub that connects lights, cameras, AC, locks, and all IoT devices — controlled by voice or app.',
+  keywords: ['smart home', 'AI hub', 'home automation', 'Matter', 'Zigbee', 'voice control'],
+  authors: [{ name: 'NovaSense' }],
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    title: 'NovaSense — The Future of Smart Living',
+    description:
+      'AI-powered smart hub that quietly orchestrates your entire home ecosystem.',
+    images: [
+      {
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'NovaSense Smart Hub',
+      },
+    ],
+    siteName: 'NovaSense',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NovaSense — The Future of Smart Living',
+    description: 'AI-powered smart hub that quietly orchestrates your entire home ecosystem.',
+    images: ['/og-image.svg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'NovaSense Smart Hub',
+  description:
+    'AI-powered smart hub connecting lights, cameras, locks, and all IoT devices by voice or app.',
+  brand: { '@type': 'Brand', name: 'NovaSense' },
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/PreOrder',
+    priceCurrency: 'USD',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,6 +72,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body className={`${geist.variable} ${sora.variable} font-sans antialiased bg-(--color-bg) text-(--color-text-primary)`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

@@ -14,9 +14,14 @@
 - **layout.tsx metadata** still has scaffold defaults — replace in Phase 1.
 - **exactOptionalPropertyTypes: true** in tsconfig — may conflict with Next.js/third-party types; skipLibCheck mitigates most; monitor in Phase 3+ Route Handlers.
 
+## Phase 3 — SEO & Performance
+
+- **og-image.svg is a placeholder** — replace with designed PNG (1200×630) before launch.
+- **Lighthouse score: to be measured at deploy time** — Lighthouse CLI requires a running server; skipped in CI.
+
 ## Emergent Backlog
 
 - Phase 1: Remove Geist_Mono from layout.tsx OR wire --font-mono in design tokens
 - Phase 1: Replace placeholder metadata in layout.tsx
 - Phase 1: Adapt design token config to Tailwind v4 CSS-first API (no tailwind.config.ts)
-- Phase 3: Remove explanatory comment from next.config.ts
+- Phase 3: Remove explanatory comment from next.config.ts (resolved in Phase 3)
