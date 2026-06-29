@@ -1,1 +1,59 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Color tokens */
+  --color-bg: rgb(255 255 255);
+  --color-bg-subtle: rgb(248 249 250);
+  --color-bg-card: rgb(255 255 255);
+  --color-border: rgb(226 232 240);
+  --color-text-primary: rgb(15 23 42);
+  --color-text-secondary: rgb(71 85 105);
+  --color-text-muted: rgb(148 163 184);
+  --color-accent: rgb(99 102 241);
+  --color-accent-hover: rgb(79 82 221);
+  --color-accent-subtle: rgb(238 242 255);
+
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 2rem;
+
+  /* Box shadow */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 16px 0 rgb(0 0 0 / 0.08);
+  --shadow-lg: 0 8px 40px 0 rgb(0 0 0 / 0.12);
+
+  /* Font families */
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-heading: var(--font-sora), var(--font-geist), system-ui, sans-serif;
+}
+
+/* Dark mode color overrides */
+.dark {
+  --color-bg: rgb(8 10 18);
+  --color-bg-subtle: rgb(15 18 30);
+  --color-bg-card: rgb(18 22 36);
+  --color-border: rgb(30 38 60);
+  --color-text-primary: rgb(241 245 249);
+  --color-text-secondary: rgb(148 163 184);
+  --color-text-muted: rgb(71 85 105);
+  --color-accent: rgb(129 140 248);
+  --color-accent-hover: rgb(99 102 241);
+  --color-accent-subtle: rgb(30 32 80);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 16px 0 rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 8px 40px 0 rgb(0 0 0 / 0.4);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
