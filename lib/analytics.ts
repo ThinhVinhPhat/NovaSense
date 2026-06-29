@@ -2,10 +2,6 @@
 
 export function trackClick(label: string): void {
   console.info('[analytics] click', { label, timestamp: Date.now() })
-  const url = '/api/track'
-  if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
-    navigator.sendBeacon(url, JSON.stringify({ event: 'click', label }))
-  }
 }
 
 export function initScrollTracking(): () => void {
