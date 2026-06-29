@@ -56,10 +56,12 @@ export function Scrollytelling() {
           {steps.map((step, i) => (
             <motion.div
               key={step.step}
-              initial={reducedMotion ? false : { opacity: 0, x: i % 2 === 0 ? -32 : 32 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+              {...(!reducedMotion && {
+                initial: { opacity: 0, x: i % 2 === 0 ? -32 : 32 },
+                whileInView: { opacity: 1, x: 0 },
+                viewport: { once: true, margin: '-100px' },
+                transition: { duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] },
+              })}
               className="flex gap-6"
             >
               <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-full border border-(--color-accent)/40 bg-(--color-accent-subtle)">
