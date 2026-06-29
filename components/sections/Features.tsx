@@ -1,7 +1,10 @@
+'use client'
+
 import { features } from '@/content/features'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { Badge } from '@/components/ui/Badge'
+import { ScrollReveal } from '@/components/ui/ScrollReveal'
 
 export function Features() {
   return (
@@ -17,21 +20,20 @@ export function Features() {
           </p>
         </div>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature) => {
+          {features.map((feature, index) => {
             const Icon = feature.icon
             return (
-              <div
-                key={feature.title}
-                className="group rounded-lg border border-(--color-border) bg-(--color-bg-card) p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-(--color-accent-subtle) text-(--color-accent)">
-                  <Icon size={20} />
+              <ScrollReveal key={feature.title} delay={index * 0.05}>
+                <div className="group h-full rounded-lg border border-(--color-border) bg-(--color-bg-card) p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-(--color-accent-subtle) text-(--color-accent)">
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="mb-1.5 font-heading text-sm font-semibold text-(--color-text-primary)">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-(--color-text-secondary)">{feature.description}</p>
                 </div>
-                <h3 className="mb-1.5 font-heading text-sm font-semibold text-(--color-text-primary)">
-                  {feature.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-(--color-text-secondary)">{feature.description}</p>
-              </div>
+              </ScrollReveal>
             )
           })}
         </div>
