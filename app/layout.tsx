@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
-      <body className={`${geist.variable} ${sora.variable} font-sans antialiased`}>
+      <body className={`${geist.variable} ${sora.variable} font-sans antialiased bg-(--color-bg) text-(--color-text-primary)`}>
         {children}
       </body>
     </html>

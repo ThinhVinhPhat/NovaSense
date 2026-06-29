@@ -11,6 +11,7 @@ export function setStoredTheme(theme: Theme): void {
 }
 
 export function applyTheme(theme: Theme): void {
+  if (typeof window === 'undefined') return
   const isDark =
     theme === 'dark' ||
     (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
