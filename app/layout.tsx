@@ -3,6 +3,7 @@ import { Geist } from 'next/font/google'
 import { Sora } from 'next/font/google'
 import { THEME_SCRIPT } from '@/lib/theme'
 import { ToastProvider } from '@/components/ui/Toast'
+import { ChatWidget } from '@/components/chatbot/ChatWidget'
 import './globals.css'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <ToastProvider>
           {children}
+          <ChatWidget />
         </ToastProvider>
       </body>
     </html>
