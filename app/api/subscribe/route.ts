@@ -19,7 +19,6 @@ export async function POST(request: NextRequest) {
 
   const { email, name, _honey } = parsed.data
   if (_honey) {
-    // Silently succeed for bots — do not forward
     return NextResponse.json({ success: true, message: 'Subscribed!' })
   }
 

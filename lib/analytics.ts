@@ -2,17 +2,14 @@
 
 export function trackClick(label: string): void {
   console.info('[analytics] click', { label, timestamp: Date.now() })
-  // Forward to webhook if available — fire-and-forget
   const url = '/api/track'
   if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
     navigator.sendBeacon(url, JSON.stringify({ event: 'click', label }))
   }
 }
 
-let scrollDepthsReported = new Set<number>()
-
 export function initScrollTracking(): () => void {
-  scrollDepthsReported = new Set()
+  const reported = new Set<number>()
 
   function onScroll() {
     const scrolled = window.scrollY + window.innerHeight
@@ -21,8 +18,8 @@ export function initScrollTracking(): () => void {
 
     const milestones = [25, 50, 75, 100] as const
     for (const milestone of milestones) {
-      if (pct >= milestone && !scrollDepthsReported.has(milestone)) {
-        scrollDepthsReported.add(milestone)
+      if (pct >= milestone && !reported.has(milestone)) {
+        reported.add(milestone)
         console.info('[analytics] scroll_depth', { depth: milestone })
       }
     }

@@ -59,7 +59,6 @@ export function Newsletter() {
             Join thousands of smart home enthusiasts. No spam, just launch updates.
           </p>
           <form className="mt-8 flex flex-col gap-3 sm:flex-row" onSubmit={handleSubmit(onSubmit)}>
-            {/* Honeypot field — hidden from real users, catches bots */}
             <input
               type="text"
               tabIndex={-1}
