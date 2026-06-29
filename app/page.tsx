@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
+import { TrustedBy } from '@/components/sections/TrustedBy'
 import { Features } from '@/components/sections/Features'
 import { Scrollytelling } from '@/components/sections/Scrollytelling'
 import { Specs } from '@/components/sections/Specs'
@@ -13,6 +14,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <TrustedBy />
         <Features />
         <Scrollytelling />
         <Specs />
