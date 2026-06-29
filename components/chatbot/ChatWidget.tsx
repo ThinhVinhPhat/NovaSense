@@ -47,7 +47,7 @@ export function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-4 left-4 z-50">
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
       {open && (
         <div className="mb-3 flex h-[480px] w-[340px] flex-col overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg-card) shadow-lg sm:w-[380px]">
           <div className="flex items-center justify-between border-b border-(--color-border) bg-(--color-accent) px-4 py-3">

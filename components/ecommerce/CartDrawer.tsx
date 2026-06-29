@@ -4,6 +4,7 @@ import { ShoppingCart, X, Plus, Minus, Trash2 } from 'lucide-react'
 import { useCart } from '@/store/cart'
 import { Button } from '@/components/ui/Button'
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 
 export function CartDrawer() {
   const [open, setOpen] = useState(false)
@@ -23,8 +24,8 @@ export function CartDrawer() {
           </span>
         )}
       </button>
-      {open && (
-        <div className="fixed inset-0 z-50 flex justify-end">
+      {open && createPortal(
+        <div className="fixed inset-0 z-60 flex justify-end">
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setOpen(false)}
@@ -95,7 +96,8 @@ export function CartDrawer() {
               </div>
             )}
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   )
