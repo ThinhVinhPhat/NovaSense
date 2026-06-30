@@ -64,7 +64,7 @@ export function Footer() {
               <ul className="mt-4 space-y-2">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary)">
+                    <a href={l.href} className="rounded text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)">
                       {l.label}
                     </a>
                   </li>

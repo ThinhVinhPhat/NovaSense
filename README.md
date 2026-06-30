@@ -4,12 +4,12 @@ A premium brand landing page for NovaSense, an AI-powered smart-home hub.
 
 **Live:** https://your-url.vercel.app
 
-## PageSpeed Insights (Mobile — deployed)
+## PageSpeed Insights (Mobile — measured 2026-06-30)
 
-- Performance: XX/100
-- Accessibility: XX/100
-- Best Practices: XX/100
-- SEO: XX/100
+- Performance: 88/100
+- Accessibility: 93/100
+- Best Practices: 100/100
+- SEO: 100/100
 
 ## Local Development
 

@@ -26,7 +26,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary)"
+                className="rounded text-sm font-medium text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)"
               >
                 {link.label}
               </a>

@@ -29,7 +29,31 @@
 - Phase 6: WishlistDrawer / RecentlyViewed panel — ProductCard tracks both via stores but no dedicated UI drawer; add if needed
 - Phase 4: /api/track endpoint missing — analytics.ts calls sendBeacon('/api/track') which fails silently; add a real track Route Handler if analytics forwarding is required
 
-## Phase 9 — Premium Redesign decisions
+## Phase 9 — Premium Redesign
+
+### QA Audit — 2026-06-30
+
+**Code-level issues found and fixed:**
+
+1. ChatWidget panel `w-[340px]` — no upper bound on narrow viewports. Added `max-w-[calc(100vw-2rem)]` to prevent overflow at 320px.
+2. Focus-visible rings missing on 8 interactive control groups: Header nav links, Footer nav links, FAQ `<summary>`, Testimonials prev/next/dot buttons, ProductShowcase view tabs and variant buttons, CartDrawer close button, DemoModal close button, ChatWidget close and FAB buttons. All fixed.
+
+**No issues found:**
+- Heading hierarchy: exactly one `<h1>` (Hero); every section uses `<h2>`; card/sub-titles use `<h3>`. Correct throughout.
+- Reduced-motion: all animated components (ParticleField, Reveal, Stagger, Counter, Magnetic, TiltCard, Features, ProductShowcase, WhyTimeline, Testimonials) correctly gate on `useReducedMotion()`.
+- Tailwind v4 token hygiene: no `style={}` for theme colors; CSS-var class syntax used throughout. Decorative SVG data-URI `style={}` in AuroraBackground accepted.
+- All icon-only buttons carry `aria-label`; form inputs carry `aria-label`.
+
+### Lighthouse scores (mobile, localhost production build, 2026-06-30)
+
+- Performance: 88/100
+- Accessibility: 93/100
+- Best Practices: 100/100
+- SEO: 100/100
+
+All scores exceed the ≥ 85 hard constraint.
+
+### Decisions
 
 - ProductShowcase variant selector uses `aria-pressed` (toggle-button semantics), NOT `role="tab"`. Deliberate: the variant buttons select a product model, they do not switch tab panels, so `role="tab"`/`aria-selected` would be incorrect a11y. The Front/Side/Back/Exploded view switcher correctly uses `role="tab"`/`aria-selected` (it does switch panels). Recently-viewed store remains in code but has no UI surface in the new layout (accepted).
 - ParticleField fill color is a fixed decorative constant (dark-mode accent); accepted — the canvas is decorative and dark-first.

@@ -86,8 +86,8 @@ export function ProductShowcase() {
                   onClick={() => setView(v.key)}
                   className={
                     view === v.key
-                      ? 'rounded-full bg-(--color-accent) px-4 py-1.5 text-sm font-medium text-white'
-                      : 'rounded-full border border-(--color-glass-border) px-4 py-1.5 text-sm font-medium text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary)'
+                      ? 'rounded-full bg-(--color-accent) px-4 py-1.5 text-sm font-medium text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)'
+                      : 'rounded-full border border-(--color-glass-border) px-4 py-1.5 text-sm font-medium text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)'
                   }
                 >
                   {v.label}
@@ -114,8 +114,8 @@ export function ProductShowcase() {
                     aria-pressed={selectedId === v.id}
                     className={
                       selectedId === v.id
-                        ? 'rounded-lg border border-(--color-accent) bg-(--color-accent)/10 px-3 py-2 text-left text-xs text-(--color-text-primary)'
-                        : 'rounded-lg border border-(--color-glass-border) px-3 py-2 text-left text-xs text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary)'
+                        ? 'rounded-lg border border-(--color-accent) bg-(--color-accent)/10 px-3 py-2 text-left text-xs text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)'
+                        : 'rounded-lg border border-(--color-glass-border) px-3 py-2 text-left text-xs text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)'
                     }
                   >
                     <span className="block font-semibold">{v.name}</span>

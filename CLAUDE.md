@@ -95,6 +95,7 @@ NEXT_PUBLIC_SITE_URL=      # https://novasense.vercel.app
 - [x] Phase 6 — Mini E-commerce
 - [x] Phase 7 — Product advisory chatbot
 - [x] Phase 8 — Full QA, audit & Deploy
+- [x] Phase 9 — Premium redesign (Aurora system, 12-section landing, hybrid commerce)
 
 ---
 

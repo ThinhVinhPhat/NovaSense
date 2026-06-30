@@ -22,7 +22,7 @@ export function Faq() {
           {faqItems.map((item, i) => (
             <Reveal key={item.question} delay={i * 0.04}>
               <details className="group rounded-2xl border border-(--color-glass-border) bg-(--color-glass) backdrop-blur-xl">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-medium text-(--color-text-primary) [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-medium text-(--color-text-primary) [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent) focus-visible:ring-inset rounded-2xl">
                   {item.question}
                   <ChevronDown size={18} className="flex-shrink-0 text-(--color-text-muted) transition-transform group-open:rotate-180" />
                 </summary>

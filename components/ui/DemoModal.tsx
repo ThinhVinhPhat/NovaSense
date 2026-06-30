@@ -46,7 +46,7 @@ export function DemoModal({ open, onClose }: DemoModalProps) {
           ref={closeRef}
           onClick={onClose}
           aria-label="Close demo"
-          className="absolute right-3 top-3 z-10 rounded-md p-1.5 text-(--color-text-muted) transition-colors hover:text-(--color-text-primary)"
+          className="absolute right-3 top-3 z-10 rounded-md p-1.5 text-(--color-text-muted) transition-colors hover:text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)"
         >
           <X size={20} />
         </button>
