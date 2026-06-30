@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { SYSTEM_PROMPT } from '@/content/chatbot-prompt'
 import { chatSchema } from '@/lib/validations'
+import { isRateLimited } from '@/lib/rate-limit'
 
 const FALLBACK_RESPONSES = [
   "I'd love to help! NovaSense is an AI-powered smart hub that connects all your home devices. What would you like to know?",
@@ -8,25 +9,10 @@ const FALLBACK_RESPONSES = [
   "NovaSense starts at $199 for the Hub and $299 for the Pro model. Both support 100+ simultaneous devices with on-device AI processing.",
 ]
 
-const rateLimitMap = new Map<string, number[]>()
-const RATE_LIMIT = 20
-const RATE_WINDOW_MS = 60_000
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now()
-  const prev = rateLimitMap.get(ip) ?? []
-  const window = prev.filter((t) => now - t < RATE_WINDOW_MS)
-  if (window.length >= RATE_LIMIT) return true
-  window.push(now)
-  rateLimitMap.set(ip, window)
-  if (rateLimitMap.size > 5_000) rateLimitMap.clear()
-  return false
-}
-
 export async function POST(request: NextRequest) {
   const ip =
     request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
-  if (isRateLimited(ip)) {
+  if (isRateLimited(ip, { limit: 20, windowMs: 60_000 })) {
     return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
   }
 

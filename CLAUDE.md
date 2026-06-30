@@ -16,7 +16,15 @@
 
 **R1 — Phase-by-phase, each phase = its own Git branch.** Never skip ahead. Only start a new phase after DoD → code-review → merged to main.
 
-**R2 — Stay on task.** Do only the work listed in the current phase. Extras go to NOTES.md "Emergent backlog". If ambiguous → pick reasonable option, record in NOTES.md.
+**R2 — Stay on task, but understand the architecture.** Do only the work listed in the current phase. Extras go to NOTES.md "Emergent backlog". If ambiguous → pick reasonable option, record in NOTES.md.
+
+However, staying on task does NOT mean ignoring architectural correctness. Before writing any piece of code, ask:
+- **What problem does this solve?** Is it scoped to one place or shared across the system?
+- **What are the constraints?** Will other routes / modules need the same logic? Does isolating it create a correctness bug (e.g. per-route Maps that fail to enforce a global rate limit)?
+- **What are the tradeoffs?** Inline = simpler now, harder to reuse. Extracted = more files, but prevents duplication and hidden bugs.
+- **What errors will occur if I don't extract?** If the answer is "a silent correctness failure" (not just code smell), extraction is required in the current task, not deferred.
+
+Rule of thumb: extract when two or more routes share the same logic AND keeping it inline would produce different behavior than sharing it (e.g. independent Maps vs one shared Map). Do NOT extract speculatively for hypothetical future callers.
 
 **R3 — Run `code-review` skill after every task.** Fix critical/high findings. Record medium/low skips in NOTES.md. Only commit after review is resolved.
 
