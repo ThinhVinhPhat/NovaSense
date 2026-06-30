@@ -18,3 +18,14 @@ export const trackSchema = z.discriminatedUnion('type', [
 ])
 
 export type TrackInput = z.infer<typeof trackSchema>
+
+export const chatMessageSchema = z.object({
+  role: z.enum(['user', 'assistant']),
+  content: z.string().min(1).max(4000),
+})
+
+export const chatSchema = z.object({
+  messages: z.array(chatMessageSchema).min(1).max(20),
+})
+
+export type ChatMessage = z.infer<typeof chatMessageSchema>
