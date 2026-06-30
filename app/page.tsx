@@ -1,15 +1,17 @@
+import dynamic from 'next/dynamic'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
 import { TrustedBy } from '@/components/sections/TrustedBy'
-import { Features } from '@/components/sections/Features'
-import { ProductShowcase } from '@/components/sections/ProductShowcase'
 import { RecentlyViewed } from '@/components/sections/RecentlyViewed'
 import { TechSpecs } from '@/components/sections/TechSpecs'
-import { WhyTimeline } from '@/components/sections/WhyTimeline'
-import { Testimonials } from '@/components/sections/Testimonials'
 import { Pricing } from '@/components/sections/Pricing'
 import { FaqContact } from '@/components/sections/FaqContact'
+
+const Features = dynamic(() => import('@/components/sections/Features').then(m => ({ default: m.Features })))
+const ProductShowcase = dynamic(() => import('@/components/sections/ProductShowcase').then(m => ({ default: m.ProductShowcase })))
+const WhyTimeline = dynamic(() => import('@/components/sections/WhyTimeline').then(m => ({ default: m.WhyTimeline })))
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })))
 
 export default function Home() {
   return (

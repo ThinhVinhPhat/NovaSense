@@ -4,8 +4,8 @@ import { Sora } from 'next/font/google'
 import { THEME_SCRIPT } from '@/lib/theme'
 import { ToastProvider } from '@/components/ui/Toast'
 import { AuroraBackground } from '@/components/sections/AuroraBackground'
-import { ChatWidget } from '@/components/chatbot/ChatWidget'
 import { AnalyticsProvider } from '@/components/AnalyticsProvider'
+import { LazyChatWidget } from '@/components/chatbot/LazyChatWidget'
 import './globals.css'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
@@ -84,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ToastProvider>
           <AnalyticsProvider />
           {children}
-          <ChatWidget />
+          <LazyChatWidget />
         </ToastProvider>
       </body>
     </html>
