@@ -2,16 +2,15 @@
 
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
-import { Badge } from '@/components/ui/Badge'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { Button } from '@/components/ui/Button'
 import { Reveal } from '@/components/motion/Reveal'
 import { pricingTiers } from '@/content/pricing-tiers'
-import { Check, Gem } from 'lucide-react'
+import { Check } from 'lucide-react'
 
 const ctaTarget: Record<string, string> = {
   Starter: 'showcase',
-  Professional: 'newsletter',
+  Professional: 'contact',
   Enterprise: 'contact',
 }
 
@@ -25,10 +24,6 @@ export function Pricing() {
     <Section id="pricing">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <Badge className="mb-4">
-            <Gem size={12} />
-            NovaSense+ Plans
-          </Badge>
           <h2 className="font-heading text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
             Choose your level of intelligence
           </h2>

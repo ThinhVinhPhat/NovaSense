@@ -8,9 +8,7 @@ import { WhyTimeline } from '@/components/sections/WhyTimeline'
 import { Statistics } from '@/components/sections/Statistics'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { Pricing } from '@/components/sections/Pricing'
-import { Faq } from '@/components/sections/Faq'
-import { Contact } from '@/components/sections/Contact'
-import { Newsletter } from '@/components/sections/Newsletter'
+import { FaqContact } from '@/components/sections/FaqContact'
 
 export default function Home() {
   return (
@@ -25,9 +23,7 @@ export default function Home() {
         <Statistics />
         <Testimonials />
         <Pricing />
-        <Faq />
-        <Contact />
-        <Newsletter />
+        <FaqContact />
       </main>
       <Footer />
     </>

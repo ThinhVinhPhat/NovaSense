@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
-import { Badge } from '@/components/ui/Badge'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { testimonials } from '@/content/testimonials'
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
 
 export function Testimonials() {
   const reduced = useReducedMotion()
@@ -31,10 +30,6 @@ export function Testimonials() {
     <Section id="testimonials">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <Badge className="mb-4">
-            <Quote size={12} />
-            Testimonials
-          </Badge>
           <h2 className="font-heading text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
             Loved in homes worldwide
           </h2>
