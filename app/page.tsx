@@ -5,6 +5,7 @@ import { TrustedBy } from '@/components/sections/TrustedBy'
 import { Features } from '@/components/sections/Features'
 import { ProductShowcase } from '@/components/sections/ProductShowcase'
 import { WhyTimeline } from '@/components/sections/WhyTimeline'
+import { Statistics } from '@/components/sections/Statistics'
 import { Newsletter } from '@/components/sections/Newsletter'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <Features />
         <ProductShowcase />
         <WhyTimeline />
+        <Statistics />
         <Newsletter />
       </main>
       <Footer />
