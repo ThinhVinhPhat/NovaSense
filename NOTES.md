@@ -53,7 +53,7 @@
 
 All scores exceed the ≥ 85 hard constraint.
 
-## Phase 9 — Premium Redesign decisions
+### Decisions
 
 - ProductShowcase variant selector uses `aria-pressed` (toggle-button semantics), NOT `role="tab"`. Deliberate: the variant buttons select a product model, they do not switch tab panels, so `role="tab"`/`aria-selected` would be incorrect a11y. The Front/Side/Back/Exploded view switcher correctly uses `role="tab"`/`aria-selected` (it does switch panels). Recently-viewed store remains in code but has no UI surface in the new layout (accepted).
 - ParticleField fill color is a fixed decorative constant (dark-mode accent); accepted — the canvas is decorative and dark-first.
