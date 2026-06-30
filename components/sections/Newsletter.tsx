@@ -7,6 +7,7 @@ import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
+import { GlassCard } from '@/components/ui/GlassCard'
 import { useToast } from '@/components/ui/Toast'
 import { subscribeSchema, type SubscribeInput } from '@/lib/validations'
 import { trackClick, initScrollTracking } from '@/lib/analytics'
@@ -45,9 +46,9 @@ export function Newsletter() {
   }
 
   return (
-    <Section id="newsletter" className="bg-(--color-bg-subtle)">
+    <Section id="newsletter">
       <Container>
-        <div className="mx-auto max-w-xl text-center">
+        <GlassCard className="mx-auto max-w-2xl p-8 text-center sm:p-12">
           <Badge className="mb-4">
             <Mail size={12} />
             Stay Updated
@@ -73,7 +74,7 @@ export function Newsletter() {
                 aria-label="Email address"
                 aria-describedby={errors.email ? 'email-error' : undefined}
                 aria-invalid={errors.email ? 'true' : 'false'}
-                className="w-full rounded-md border border-(--color-border) bg-(--color-bg) px-4 py-2.5 text-sm text-(--color-text-primary) placeholder:text-(--color-text-muted) focus:outline-none focus:ring-2 focus:ring-(--color-accent) aria-[invalid=true]:border-red-400"
+                className="w-full rounded-md border border-(--color-glass-border) bg-(--color-bg) px-4 py-2.5 text-sm text-(--color-text-primary) placeholder:text-(--color-text-muted) focus:outline-none focus:ring-2 focus:ring-(--color-accent) aria-[invalid=true]:border-red-400"
                 {...register('email')}
               />
               {errors.email && (
@@ -94,7 +95,7 @@ export function Newsletter() {
           <p className="mt-3 text-xs text-(--color-text-muted)">
             By subscribing you agree to our privacy policy.
           </p>
-        </div>
+        </GlassCard>
       </Container>
     </Section>
   )
