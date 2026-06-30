@@ -1,8 +1,15 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useSyncExternalStore } from 'react'
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
 import type { ReactNode, MouseEvent } from 'react'
+
+const POINTER_MQ = '(hover: hover) and (pointer: fine)'
+function subscribePointer(cb: () => void) {
+  const mq = window.matchMedia(POINTER_MQ)
+  mq.addEventListener('change', cb)
+  return () => mq.removeEventListener('change', cb)
+}
 
 interface TiltCardProps {
   children: ReactNode
@@ -12,16 +19,12 @@ interface TiltCardProps {
 
 export function TiltCard({ children, className, max = 8 }: TiltCardProps) {
   const reduced = useReducedMotion()
-  const [hasPointer, setHasPointer] = useState(false)
+  const hasPointer = useSyncExternalStore(subscribePointer, () => window.matchMedia(POINTER_MQ).matches, () => false)
   const ref = useRef<HTMLDivElement>(null)
   const rx = useMotionValue(0)
   const ry = useMotionValue(0)
   const srx = useSpring(rx, { stiffness: 150, damping: 18 })
   const sry = useSpring(ry, { stiffness: 150, damping: 18 })
-
-  useEffect(() => {
-    setHasPointer(window.matchMedia('(hover: hover) and (pointer: fine)').matches)
-  }, [])
 
   function handleMove(e: MouseEvent<HTMLDivElement>) {
     const node = ref.current

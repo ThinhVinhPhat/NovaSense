@@ -1,8 +1,15 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useSyncExternalStore } from 'react'
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
 import type { ReactNode, MouseEvent } from 'react'
+
+const POINTER_MQ = '(hover: hover) and (pointer: fine)'
+function subscribePointer(cb: () => void) {
+  const mq = window.matchMedia(POINTER_MQ)
+  mq.addEventListener('change', cb)
+  return () => mq.removeEventListener('change', cb)
+}
 
 interface MagneticProps {
   children: ReactNode
@@ -12,16 +19,12 @@ interface MagneticProps {
 
 export function Magnetic({ children, strength = 0.3, className }: MagneticProps) {
   const reduced = useReducedMotion()
-  const [hasPointer, setHasPointer] = useState(false)
+  const hasPointer = useSyncExternalStore(subscribePointer, () => window.matchMedia(POINTER_MQ).matches, () => false)
   const ref = useRef<HTMLSpanElement>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const sx = useSpring(x, { stiffness: 200, damping: 15, mass: 0.3 })
   const sy = useSpring(y, { stiffness: 200, damping: 15, mass: 0.3 })
-
-  useEffect(() => {
-    setHasPointer(window.matchMedia('(hover: hover) and (pointer: fine)').matches)
-  }, [])
 
   function handleMove(e: MouseEvent<HTMLSpanElement>) {
     const node = ref.current

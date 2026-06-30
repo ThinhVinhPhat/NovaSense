@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useSyncExternalStore } from 'react'
 import { createPortal } from 'react-dom'
 import { ShoppingCart, X, Plus, Minus, Trash2 } from 'lucide-react'
 import { useCart } from '@/store/cart'
@@ -8,9 +8,7 @@ import { Button } from '@/components/ui/Button'
 
 export function CartDrawer() {
   const [open, setOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => { setMounted(true) }, [])
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false)
 
   useEffect(() => {
     if (!open) return
