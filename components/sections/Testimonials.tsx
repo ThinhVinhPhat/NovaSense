@@ -77,7 +77,7 @@ export function Testimonials() {
             <button
               onClick={() => go(-1)}
               aria-label="Previous testimonial"
-              className="rounded-full border border-(--color-glass-border) p-2 text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary)"
+              className="rounded-full border border-(--color-glass-border) p-2 text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)"
             >
               <ChevronLeft size={18} />
             </button>
@@ -88,14 +88,14 @@ export function Testimonials() {
                   onClick={() => setIndex(i)}
                   aria-label={`Go to testimonial ${i + 1}`}
                   aria-current={i === index}
-                  className={i === index ? 'h-2 w-6 rounded-full bg-(--color-accent)' : 'h-2 w-2 rounded-full bg-(--color-text-muted)'}
+                  className={i === index ? 'h-2 w-6 rounded-full bg-(--color-accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)' : 'h-2 w-2 rounded-full bg-(--color-text-muted) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)'}
                 />
               ))}
             </div>
             <button
               onClick={() => go(1)}
               aria-label="Next testimonial"
-              className="rounded-full border border-(--color-glass-border) p-2 text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary)"
+              className="rounded-full border border-(--color-glass-border) p-2 text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)"
             >
               <ChevronRight size={18} />
             </button>

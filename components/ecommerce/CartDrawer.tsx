@@ -38,7 +38,7 @@ export function CartDrawer() {
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close cart"
-                className="rounded-md p-1 text-(--color-text-muted) hover:text-(--color-text-primary) transition-colors"
+                className="rounded-md p-1 text-(--color-text-muted) hover:text-(--color-text-primary) transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)"
               >
                 <X size={20} />
               </button>

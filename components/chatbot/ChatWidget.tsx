@@ -49,7 +49,7 @@ export function ChatWidget() {
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
       {open && (
-        <div className="mb-3 flex h-[480px] w-[340px] flex-col overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg-card) shadow-lg sm:w-[380px]">
+        <div className="mb-3 flex h-[480px] w-[340px] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg-card) shadow-lg sm:w-[380px]">
           <div className="flex items-center justify-between border-b border-(--color-border) bg-(--color-accent) px-4 py-3">
             <div>
               <p className="text-sm font-semibold text-white">NovaSense Advisor</p>
@@ -58,7 +58,7 @@ export function ChatWidget() {
             <button
               onClick={() => setOpen(false)}
               aria-label="Close chat"
-              className="rounded-md p-1 text-white/80 hover:text-white transition-colors"
+              className="rounded-md p-1 text-white/80 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             >
               <X size={18} />
             </button>
@@ -101,7 +101,7 @@ export function ChatWidget() {
         onClick={() => setOpen(!open)}
         aria-label="Open product advisor chat"
         className={cn(
-          'flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all hover:scale-105',
+          'flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)',
           open ? 'bg-(--color-bg-card) border border-(--color-border) text-(--color-text-primary)' : 'bg-(--color-accent) text-white',
         )}
       >
