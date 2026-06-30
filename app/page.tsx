@@ -4,7 +4,7 @@ import { Hero } from '@/components/sections/Hero'
 import { TrustedBy } from '@/components/sections/TrustedBy'
 import { Features } from '@/components/sections/Features'
 import { ProductShowcase } from '@/components/sections/ProductShowcase'
-import { Scrollytelling } from '@/components/sections/Scrollytelling'
+import { WhyTimeline } from '@/components/sections/WhyTimeline'
 import { Newsletter } from '@/components/sections/Newsletter'
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
         <TrustedBy />
         <Features />
         <ProductShowcase />
-        <Scrollytelling />
+        <WhyTimeline />
         <Newsletter />
       </main>
       <Footer />
