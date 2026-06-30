@@ -85,7 +85,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t border-(--color-glass-border) pt-6 text-center text-xs text-(--color-text-muted)">
-          © 2026 NovaSense. All rights reserved.
+          © {new Date().getFullYear()} NovaSense. All rights reserved.
         </div>
       </Container>
     </footer>
