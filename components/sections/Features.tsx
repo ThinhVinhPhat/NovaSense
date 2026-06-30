@@ -3,11 +3,10 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
-import { Badge } from '@/components/ui/Badge'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { TiltCard } from '@/components/motion/TiltCard'
 import { Stagger, staggerItem } from '@/components/motion/Stagger'
-import { Mic, Workflow, Leaf, Smartphone, ShieldCheck, BarChart3, Sparkles } from 'lucide-react'
+import { Mic, Workflow, Leaf, Smartphone, ShieldCheck, BarChart3 } from 'lucide-react'
 
 const features = [
   { icon: Mic, title: 'AI Voice Assistant', desc: 'Natural-language control — no rigid commands, just speak.' },
@@ -25,10 +24,6 @@ export function Features() {
     <Section id="features">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <Badge className="mb-4">
-            <Sparkles size={12} />
-            Features
-          </Badge>
           <h2 className="font-heading text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
             Everything your home needs, in one brain
           </h2>

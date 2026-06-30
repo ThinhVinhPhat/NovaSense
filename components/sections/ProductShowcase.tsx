@@ -4,14 +4,13 @@ import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
-import { Badge } from '@/components/ui/Badge'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { Button } from '@/components/ui/Button'
 import { useToast } from '@/components/ui/Toast'
 import { DeviceMock, type DeviceView } from '@/components/ui/DeviceMock'
 import { productVariants, type ProductVariant } from '@/content/products'
 import { useCart } from '@/store/cart'
-import { Box, ShoppingCart } from 'lucide-react'
+import { ShoppingCart } from 'lucide-react'
 
 const views: { key: DeviceView; label: string }[] = [
   { key: 'front', label: 'Front' },
@@ -45,10 +44,6 @@ export function ProductShowcase() {
     <Section id="showcase">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <Badge className="mb-4">
-            <Box size={12} />
-            Product
-          </Badge>
           <h2 className="font-heading text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
             Designed from every angle
           </h2>

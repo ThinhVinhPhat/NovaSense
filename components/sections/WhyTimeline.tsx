@@ -4,10 +4,8 @@ import { useRef } from 'react'
 import { motion, useScroll, useSpring, useReducedMotion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
-import { Badge } from '@/components/ui/Badge'
 import { Reveal } from '@/components/motion/Reveal'
 import { timeline } from '@/content/timeline'
-import { Route } from 'lucide-react'
 
 export function WhyTimeline() {
   const reduced = useReducedMotion()
@@ -19,10 +17,6 @@ export function WhyTimeline() {
     <Section id="why">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <Badge className="mb-4">
-            <Route size={12} />
-            Why NovaSense
-          </Badge>
           <h2 className="font-heading text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
             Built to get smarter every day
           </h2>
