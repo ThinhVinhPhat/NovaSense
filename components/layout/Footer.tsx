@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
-import { Github, Facebook, Linkedin } from 'lucide-react'
+import { GitFork, Globe, Link2 } from 'lucide-react'
 
 const columns = [
   {
@@ -23,9 +23,9 @@ const columns = [
 ]
 
 const socials = [
-  { label: 'GitHub', href: 'https://github.com', icon: Github },
-  { label: 'Facebook', href: 'https://facebook.com', icon: Facebook },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
+  { label: 'GitHub', href: 'https://github.com', icon: GitFork },
+  { label: 'Facebook', href: 'https://facebook.com', icon: Globe },
+  { label: 'LinkedIn', href: 'https://linkedin.com', icon: Link2 },
 ]
 
 export function Footer() {
