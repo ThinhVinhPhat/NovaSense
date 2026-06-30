@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { NextRequest } from 'next/server'
 
 vi.mock('@/db', () => ({
@@ -7,17 +7,22 @@ vi.mock('@/db', () => ({
 vi.mock('@/db/schema', () => ({ events: {} }))
 
 function makeRequest(body: unknown): NextRequest {
-  return new Request('http://localhost/api/track', {
+  return new NextRequest('http://localhost/api/track', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
-  }) as unknown as NextRequest
+  })
 }
 
 beforeEach(() => {
-  vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('ok', { status: 200 })))
+  vi.resetModules()
   vi.stubEnv('WEBHOOK_URL', '')
   vi.stubEnv('TRACK_WEBHOOK_URL', '')
+  vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('ok', { status: 200 })))
+})
+
+afterEach(() => {
+  vi.unstubAllEnvs()
 })
 
 describe('POST /api/track', () => {
@@ -49,9 +54,10 @@ describe('POST /api/track', () => {
 
   it('returns 400 for non-JSON body', async () => {
     const { POST } = await import('@/app/api/track/route')
-    const req = new Request('http://localhost/api/track', {
-      method: 'POST', body: 'not json',
-    }) as unknown as NextRequest
+    const req = new NextRequest('http://localhost/api/track', {
+      method: 'POST',
+      body: 'not json',
+    })
     const res = await POST(req)
     expect(res.status).toBe(400)
   })

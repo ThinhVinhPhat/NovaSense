@@ -2,8 +2,11 @@ import { createClient } from '@libsql/client'
 import { drizzle } from 'drizzle-orm/libsql'
 import * as schema from './schema'
 
+const url = process.env.DATABASE_URL
+if (!url) throw new Error('DATABASE_URL is not set')
+
 const client = createClient({
-  url: process.env.DATABASE_URL ?? 'file:local.db',
+  url,
   ...(process.env.DATABASE_AUTH_TOKEN ? { authToken: process.env.DATABASE_AUTH_TOKEN } : {}),
 })
 

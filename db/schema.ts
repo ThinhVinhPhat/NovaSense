@@ -17,7 +17,7 @@ export const events = sqliteTable('events', {
   path: text('path').notNull(),
   label: text('label'),
   depth: integer('depth'),
-  ts: integer('ts').notNull(),
+  ts: integer('ts').notNull().$defaultFn(() => Date.now()),
   createdAt: integer('created_at', { mode: 'timestamp' })
     .notNull()
     .$defaultFn(() => new Date()),
