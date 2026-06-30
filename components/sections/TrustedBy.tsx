@@ -37,7 +37,7 @@ export function TrustedBy() {
           <motion.ul
             className="flex w-max items-center gap-16"
             animate={{ x: ['0%', '-50%'] }}
-            transition={{ duration: 28, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}
+            transition={{ duration: 60, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}
           >
             {loop.map((brand, i) => (
               <li

@@ -7,7 +7,7 @@ import { Section } from '@/components/ui/Section'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { Button } from '@/components/ui/Button'
 import { useToast } from '@/components/ui/Toast'
-import { DeviceMock, type DeviceView } from '@/components/ui/DeviceMock'
+import { DeviceMock, type DeviceView, type DeviceTier } from '@/components/ui/DeviceMock'
 import { productVariants, type ProductVariant } from '@/content/products'
 import { useCart } from '@/store/cart'
 import { ShoppingCart } from 'lucide-react'
@@ -34,6 +34,7 @@ export function ProductShowcase() {
   const [selectedId, setSelectedId] = useState<string>(productVariants[0]!.id)
 
   const selected: ProductVariant = productVariants.find((v) => v.id === selectedId) ?? productVariants[0]!
+  const tier: DeviceTier = selected.name.includes('Pro') ? 'pro' : 'hub'
 
   function handleAdd() {
     addItem(selected)
@@ -44,9 +45,9 @@ export function ProductShowcase() {
     <Section id="showcase">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="font-heading text-3xl font-bold text-text-primary sm:text-4xl">
-            <span className="text-gradient text-5xl">Designed from every angle</span>
-          </h1>
+          <h2 className="font-heading text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
+            Designed from <span className="text-gradient">every angle</span>
+          </h2>
         </div>
 
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-2">
@@ -54,19 +55,19 @@ export function ProductShowcase() {
             <div className="relative flex aspect-square items-center justify-center">
               {reduced ? (
                 <div className="flex w-full items-center justify-center">
-                  <DeviceMock view={view} />
+                  <DeviceMock view={view} color={selected.color} tier={tier} />
                 </div>
               ) : (
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={view}
+                    key={`${view}-${selected.id}`}
                     initial={{ opacity: 0, rotateY: -20 }}
                     animate={{ opacity: 1, rotateY: 0 }}
                     exit={{ opacity: 0, rotateY: 20 }}
                     transition={{ duration: 0.35 }}
                     className="flex w-full items-center justify-center"
                   >
-                    <DeviceMock view={view} />
+                    <DeviceMock view={view} color={selected.color} tier={tier} />
                   </motion.div>
                 </AnimatePresence>
               )}
