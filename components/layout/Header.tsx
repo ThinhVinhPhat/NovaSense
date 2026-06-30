@@ -13,6 +13,7 @@ import { trackClick } from '@/lib/analytics'
 const navLinks = [
   { href: '#features', label: 'Features' },
   { href: '#showcase', label: 'Product' },
+  { href: '#specs', label: 'Specs' },
   { href: '#pricing', label: 'Pricing' },
   { href: '#contact', label: 'Contact' },
 ]
