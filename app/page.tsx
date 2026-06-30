@@ -8,10 +8,10 @@ import { TechSpecs } from '@/components/sections/TechSpecs'
 import { Pricing } from '@/components/sections/Pricing'
 import { FaqContact } from '@/components/sections/FaqContact'
 
-const Features = dynamic(() => import('@/components/sections/Features').then(m => ({ default: m.Features })))
-const ProductShowcase = dynamic(() => import('@/components/sections/ProductShowcase').then(m => ({ default: m.ProductShowcase })))
-const WhyTimeline = dynamic(() => import('@/components/sections/WhyTimeline').then(m => ({ default: m.WhyTimeline })))
-const Testimonials = dynamic(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })))
+const Features = dynamic(() => import('@/components/sections/Features').then(m => ({ default: m.Features })), { loading: () => <div className="h-96" /> })
+const ProductShowcase = dynamic(() => import('@/components/sections/ProductShowcase').then(m => ({ default: m.ProductShowcase })), { loading: () => <div className="h-150" /> })
+const WhyTimeline = dynamic(() => import('@/components/sections/WhyTimeline').then(m => ({ default: m.WhyTimeline })), { loading: () => <div className="h-175" /> })
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })), { loading: () => <div className="h-96" /> })
 
 export default function Home() {
   return (

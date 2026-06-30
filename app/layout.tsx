@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist } from 'next/font/google'
-import { Sora } from 'next/font/google'
+import { Geist, Sora } from 'next/font/google'
 import { THEME_SCRIPT } from '@/lib/theme'
 import { ToastProvider } from '@/components/ui/Toast'
 import { AuroraBackground } from '@/components/sections/AuroraBackground'
