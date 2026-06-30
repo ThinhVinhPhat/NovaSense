@@ -33,3 +33,4 @@
 
 - ProductShowcase variant selector uses `aria-pressed` (toggle-button semantics), NOT `role="tab"`. Deliberate: the variant buttons select a product model, they do not switch tab panels, so `role="tab"`/`aria-selected` would be incorrect a11y. The Front/Side/Back/Exploded view switcher correctly uses `role="tab"`/`aria-selected` (it does switch panels). Recently-viewed store remains in code but has no UI surface in the new layout (accepted).
 - ParticleField fill color is a fixed decorative constant (dark-mode accent); accepted — the canvas is decorative and dark-first.
+- Footer social icons: lucide-react@1.22.0 removed brand glyphs (Github/Facebook/Linkedin do not exist). Using GitFork/Globe/Link2 as generic stand-ins; aria-labels/hrefs are correct (GitHub/Facebook/LinkedIn). Swap in brand-accurate SVGs or a brand-icon set if visual accuracy is required.
