@@ -6,6 +6,8 @@ import { Features } from '@/components/sections/Features'
 import { ProductShowcase } from '@/components/sections/ProductShowcase'
 import { WhyTimeline } from '@/components/sections/WhyTimeline'
 import { Statistics } from '@/components/sections/Statistics'
+import { Testimonials } from '@/components/sections/Testimonials'
+import { Pricing } from '@/components/sections/Pricing'
 import { Newsletter } from '@/components/sections/Newsletter'
 
 export default function Home() {
@@ -19,6 +21,8 @@ export default function Home() {
         <ProductShowcase />
         <WhyTimeline />
         <Statistics />
+        <Testimonials />
+        <Pricing />
         <Newsletter />
       </main>
       <Footer />
