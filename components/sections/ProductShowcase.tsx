@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { Heart, ShoppingCart } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { GlassCard } from '@/components/ui/GlassCard'
@@ -10,7 +11,8 @@ import { useToast } from '@/components/ui/Toast'
 import { DeviceMock, type DeviceView, type DeviceTier } from '@/components/ui/DeviceMock'
 import { productVariants, type ProductVariant } from '@/content/products'
 import { useCart } from '@/store/cart'
-import { ShoppingCart } from 'lucide-react'
+import { useWishlist } from '@/store/wishlist'
+import { useRecentlyViewed } from '@/store/recentlyViewed'
 
 const views: { key: DeviceView; label: string }[] = [
   { key: 'front', label: 'Front' },
@@ -30,11 +32,19 @@ export function ProductShowcase() {
   const reduced = useReducedMotion()
   const { addItem } = useCart()
   const { toast } = useToast()
+  const { toggle: toggleWishlist, has: inWishlist } = useWishlist()
+  const { add: addRecentlyViewed } = useRecentlyViewed()
   const [view, setView] = useState<DeviceView>('front')
   const [selectedId, setSelectedId] = useState<string>(productVariants[0]!.id)
 
   const selected: ProductVariant = productVariants.find((v) => v.id === selectedId) ?? productVariants[0]!
   const tier: DeviceTier = selected.name.includes('Pro') ? 'pro' : 'hub'
+  const wishlisted = inWishlist(selected.id)
+
+  useEffect(() => {
+    const variant = productVariants.find((v) => v.id === selectedId)
+    if (variant) addRecentlyViewed(variant)
+  }, [selectedId, addRecentlyViewed])
 
   function handleAdd() {
     addItem(selected)
@@ -121,10 +131,24 @@ export function ProductShowcase() {
               </div>
             </div>
 
-            <Button className="mt-7 w-full" size="lg" onClick={handleAdd}>
-              <ShoppingCart size={18} />
-              Add to Cart
-            </Button>
+            <div className="mt-7 flex gap-3">
+              <Button className="flex-1" size="lg" onClick={handleAdd}>
+                <ShoppingCart size={18} />
+                Add to Cart
+              </Button>
+              <button
+                type="button"
+                aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                aria-pressed={wishlisted}
+                onClick={() => toggleWishlist(selected.id)}
+                className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-(--color-glass-border) transition-colors hover:border-(--color-accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)"
+              >
+                <Heart
+                  size={20}
+                  className={wishlisted ? 'fill-(--color-accent) text-(--color-accent)' : 'text-(--color-text-secondary)'}
+                />
+              </button>
+            </div>
 
             <ul className="mt-6 grid grid-cols-1 gap-2 border-t border-(--color-glass-border) pt-5 text-xs text-(--color-text-secondary) sm:grid-cols-2">
               {specStrip.map((s) => (

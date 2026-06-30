@@ -4,6 +4,7 @@ import { Hero } from '@/components/sections/Hero'
 import { TrustedBy } from '@/components/sections/TrustedBy'
 import { Features } from '@/components/sections/Features'
 import { ProductShowcase } from '@/components/sections/ProductShowcase'
+import { RecentlyViewed } from '@/components/sections/RecentlyViewed'
 import { TechSpecs } from '@/components/sections/TechSpecs'
 import { WhyTimeline } from '@/components/sections/WhyTimeline'
 import { Testimonials } from '@/components/sections/Testimonials'
@@ -19,6 +20,7 @@ export default function Home() {
         <TrustedBy />
         <Features />
         <ProductShowcase />
+        <RecentlyViewed />
         <TechSpecs />
         <WhyTimeline />
         <Testimonials />
