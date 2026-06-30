@@ -57,23 +57,30 @@ export function ProductShowcase() {
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-2">
           <div>
             <div className="relative flex aspect-square items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={view}
-                  initial={reduced ? false : { opacity: 0, rotateY: -20 }}
-                  animate={reduced ? {} : { opacity: 1, rotateY: 0 }}
-                  exit={reduced ? {} : { opacity: 0, rotateY: 20 }}
-                  transition={{ duration: 0.35 }}
-                  className="flex w-full items-center justify-center"
-                >
+              {reduced ? (
+                <div className="flex w-full items-center justify-center">
                   <DeviceMock view={view} />
-                </motion.div>
-              </AnimatePresence>
+                </div>
+              ) : (
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={view}
+                    initial={{ opacity: 0, rotateY: -20 }}
+                    animate={{ opacity: 1, rotateY: 0 }}
+                    exit={{ opacity: 0, rotateY: 20 }}
+                    transition={{ duration: 0.35 }}
+                    className="flex w-full items-center justify-center"
+                  >
+                    <DeviceMock view={view} />
+                  </motion.div>
+                </AnimatePresence>
+              )}
             </div>
             <div role="tablist" aria-label="Device views" className="mt-6 flex justify-center gap-2">
               {views.map((v) => (
                 <button
                   key={v.key}
+                  type="button"
                   role="tab"
                   aria-selected={view === v.key}
                   onClick={() => setView(v.key)}
@@ -102,6 +109,7 @@ export function ProductShowcase() {
                 {productVariants.map((v) => (
                   <button
                     key={v.id}
+                    type="button"
                     onClick={() => setSelectedId(v.id)}
                     aria-pressed={selectedId === v.id}
                     className={
