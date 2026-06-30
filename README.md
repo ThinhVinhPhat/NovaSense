@@ -2,7 +2,7 @@
 
 A premium brand landing page for NovaSense, an AI-powered smart-home hub.
 
-**Live:** https://your-url.vercel.app
+**Live:** nova-sense-one.vercel.app
 
 ## PageSpeed Insights (Mobile — measured 2026-06-30)
 
