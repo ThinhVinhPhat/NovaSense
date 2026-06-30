@@ -1,13 +1,18 @@
 'use client'
 
+import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { ShoppingCart, X, Plus, Minus, Trash2 } from 'lucide-react'
 import { useCart } from '@/store/cart'
 import { Button } from '@/components/ui/Button'
-import { useState } from 'react'
-import { createPortal } from 'react-dom'
 
 export function CartDrawer() {
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
   const { items, count, total, updateQty, removeItem } = useCart()
 
   return (

@@ -1,9 +1,9 @@
 export function AuroraBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div className="absolute -top-40 left-1/2 h-[55vh] w-[55vh] -translate-x-1/2 rounded-full bg-(--color-accent) opacity-25 blur-[130px]" />
-      <div className="absolute top-1/3 -left-32 h-[45vh] w-[45vh] rounded-full bg-(--color-violet) opacity-20 blur-[130px]" />
-      <div className="absolute bottom-0 right-0 h-[45vh] w-[45vh] rounded-full bg-(--color-cyan) opacity-[0.12] blur-[130px]" />
+      <div className="absolute -top-40 left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-(--color-accent) opacity-25 blur-[130px]" />
+      <div className="absolute top-1/3 -left-32 h-[400px] w-[400px] rounded-full bg-(--color-violet) opacity-20 blur-[130px]" />
+      <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-(--color-cyan) opacity-[0.12] blur-[130px]" />
       <div
         className="absolute inset-0 opacity-[0.025] mix-blend-overlay"
         style={{

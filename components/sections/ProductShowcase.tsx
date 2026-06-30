@@ -13,6 +13,7 @@ import { productVariants, type ProductVariant } from '@/content/products'
 import { useCart } from '@/store/cart'
 import { useWishlist } from '@/store/wishlist'
 import { useRecentlyViewed } from '@/store/recentlyViewed'
+import { useShowcase } from '@/store/showcase'
 
 const views: { key: DeviceView; label: string }[] = [
   { key: 'front', label: 'Front' },
@@ -34,17 +35,19 @@ export function ProductShowcase() {
   const { toast } = useToast()
   const { toggle: toggleWishlist, has: inWishlist } = useWishlist()
   const { add: addRecentlyViewed } = useRecentlyViewed()
+  const { requestedVariantId, clearRequest } = useShowcase()
   const [view, setView] = useState<DeviceView>('front')
-  const [selectedId, setSelectedId] = useState<string>(productVariants[0]!.id)
+  const [localSelectedId, setLocalSelectedId] = useState<string>(productVariants[0]!.id)
 
-  const selected: ProductVariant = productVariants.find((v) => v.id === selectedId) ?? productVariants[0]!
+  const activeId = requestedVariantId ?? localSelectedId
+  const selected: ProductVariant = productVariants.find((v) => v.id === activeId) ?? productVariants[0]!
   const tier: DeviceTier = selected.name.includes('Pro') ? 'pro' : 'hub'
   const wishlisted = inWishlist(selected.id)
 
   useEffect(() => {
-    const variant = productVariants.find((v) => v.id === selectedId)
+    const variant = productVariants.find((v) => v.id === activeId)
     if (variant) addRecentlyViewed(variant)
-  }, [selectedId, addRecentlyViewed])
+  }, [activeId, addRecentlyViewed])
 
   function handleAdd() {
     addItem(selected)
@@ -116,10 +119,10 @@ export function ProductShowcase() {
                   <button
                     key={v.id}
                     type="button"
-                    onClick={() => setSelectedId(v.id)}
-                    aria-pressed={selectedId === v.id}
+                    onClick={() => { clearRequest(); setLocalSelectedId(v.id) }}
+                    aria-pressed={activeId === v.id}
                     className={
-                      selectedId === v.id
+                      activeId === v.id
                         ? 'rounded-lg border border-(--color-accent) bg-(--color-accent)/10 px-3 py-2 text-left text-xs text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)'
                         : 'rounded-lg border border-(--color-glass-border) px-3 py-2 text-left text-xs text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)'
                     }

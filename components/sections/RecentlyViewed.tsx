@@ -6,6 +6,7 @@ import { Container } from '@/components/ui/Container'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { useRecentlyViewed } from '@/store/recentlyViewed'
 import { useWishlist } from '@/store/wishlist'
+import { useShowcase } from '@/store/showcase'
 
 const emptyItems: never[] = []
 
@@ -16,6 +17,7 @@ export function RecentlyViewed() {
     () => emptyItems,
   )
   const { toggle, has } = useWishlist()
+  const { requestVariant } = useShowcase()
 
   if (items.length === 0) return null
 
@@ -58,12 +60,16 @@ export function RecentlyViewed() {
                 <p className="font-heading text-base font-bold text-(--color-text-primary)">
                   ${item.price.toFixed(2)}
                 </p>
-                <a
-                  href="#showcase"
-                  className="mt-1 text-xs font-medium text-(--color-accent) hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent) rounded"
+                <button
+                  type="button"
+                  onClick={() => {
+                    requestVariant(item.id)
+                    document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                  className="mt-1 text-left text-xs font-medium text-(--color-accent) hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent) rounded"
                 >
                   View →
-                </a>
+                </button>
               </GlassCard>
             )
           })}
