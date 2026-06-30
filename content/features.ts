@@ -1,53 +1,31 @@
-import type { LucideIcon } from 'lucide-react'
-import {
-  Mic2, Link2, Home, Zap, Shield, Smartphone, BarChart2, Layers
-} from 'lucide-react'
+import { BarChart3, Leaf, Mic, ShieldCheck, Smartphone, Workflow, type LucideIcon } from 'lucide-react'
+
 
 export interface Feature {
   icon: LucideIcon
   title: string
   description: string
 }
-
-export const features: Feature[] = [
+export const features = [
   {
-    icon: Mic2,
-    title: 'Natural-Language Voice Control',
-    description: 'Speak naturally to NovaSense. No rigid commands — just conversation.',
+    icon: Mic,
+    title: 'AI Voice Assistant',
+    desc: 'Natural-language control — no rigid commands, just speak.',
+    span: 'lg:col-span-2 lg:row-span-2',
+    hero: true,
   },
+  { icon: Workflow, title: 'Smart Automation', desc: 'Scenes and routines that orchestrate the whole home.', span: '' },
+  { icon: Leaf, title: 'Energy Saving', desc: 'Track consumption and cut waste with real-time insights.', span: '' },
+  { icon: Smartphone, title: 'Remote Access', desc: 'Control everything from anywhere via the unified app.', span: '' },
+  { icon: ShieldCheck, title: 'Security', desc: 'AI cameras with face recognition and instant alerts.', span: '' },
   {
-    icon: Link2,
-    title: 'Universal Compatibility',
-    description: 'Works with Matter, Zigbee, Z-Wave, Thread, Wi-Fi, and Bluetooth devices.',
-  },
-  {
-    icon: Home,
-    title: 'Whole-Home Control',
-    description: 'Lights, cameras, AC, curtains, door locks, and sensors in one place.',
-  },
-  {
-    icon: Zap,
-    title: 'Smart Automations & Scenes',
-    description: 'Create routines that adapt to your daily life automatically.',
-  },
-  {
-    icon: Shield,
-    title: 'On-Device Edge AI',
-    description: 'AI processing stays local for millisecond response times and full privacy.',
-  },
-  {
-    icon: Smartphone,
-    title: 'Unified App + Voice',
-    description: 'Control everything from the companion app or by voice — iOS and Android.',
-  },
-  {
-    icon: BarChart2,
-    title: 'Energy Monitoring',
-    description: 'Real-time insights into your home’s energy usage with actionable suggestions.',
-  },
-  {
-    icon: Layers,
-    title: 'Expandable Ecosystem',
-    description: 'Start small and add devices as you grow. No hub replacement needed.',
+    icon: BarChart3,
+    title: 'Analytics',
+    desc: 'Real-time statistics across every connected device.',
+    span: 'sm:col-span-2 lg:col-span-4',
+    analytics: true,
   },
 ]
+
+export const waveBars = [40, 70, 45, 90, 55, 75, 35, 60]
+export const sparkPoints = [12, 28, 18, 40, 30, 52, 38, 60, 48, 70]
