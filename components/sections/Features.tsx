@@ -59,7 +59,6 @@ export function Features() {
     <Section id="features">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold tracking-widest text-cyan-400">CAPABILITIES</span>
           <h2 className="mt-3 font-heading text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
             Everything your home needs <span className="text-gradient">in one hub</span>
           </h2>
