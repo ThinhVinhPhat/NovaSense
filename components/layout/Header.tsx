@@ -8,8 +8,9 @@ import { CartDrawer } from '@/components/ecommerce/CartDrawer'
 
 const navLinks = [
   { href: '#features', label: 'Features' },
-  { href: '#specs', label: 'Specs' },
-  { href: '#newsletter', label: 'Stay Updated' },
+  { href: '#showcase', label: 'Product' },
+  { href: '#pricing', label: 'Pricing' },
+  { href: '#contact', label: 'Contact' },
 ]
 
 export function Header() {

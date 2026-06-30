@@ -54,7 +54,7 @@ export function CartDrawer() {
                         <p className="text-sm font-medium text-(--color-text-primary) truncate">{item.variant.name}</p>
                         <p className="text-xs text-(--color-text-secondary)">{item.variant.colorLabel}</p>
                         <p className="text-sm font-semibold text-(--color-text-primary)">
-                          ${item.variant.price * item.qty}
+                          ${(item.variant.price * item.qty).toFixed(2)}
                         </p>
                       </div>
                       <div className="flex items-center gap-1">
@@ -90,7 +90,7 @@ export function CartDrawer() {
               <div className="border-t border-(--color-border) px-5 py-4">
                 <div className="mb-3 flex justify-between">
                   <span className="text-sm text-(--color-text-secondary)">Total</span>
-                  <span className="font-heading text-lg font-bold text-(--color-text-primary)">${total}</span>
+                  <span className="font-heading text-lg font-bold text-(--color-text-primary)">${total.toFixed(2)}</span>
                 </div>
                 <Button className="w-full" size="md">Checkout</Button>
               </div>
