@@ -72,14 +72,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }}
+        />
       </head>
       <body className={`${geist.variable} ${sora.variable} font-sans antialiased bg-(--color-canvas) text-(--color-text-primary)`}>
         <AuroraBackground />
+        
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        
         <ToastProvider>
           {children}
           <ChatWidget />

@@ -27,7 +27,7 @@ export function Pricing() {
           <h2 className="font-heading text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
             Choose your level of intelligence
           </h2>
-          <p className="mt-4 text-(--color-text-secondary)">
+          <p className="mt-4 text-gradient text-lg">
             Every hub includes Starter free. Upgrade anytime for adaptive AI and insights.
           </p>
         </div>

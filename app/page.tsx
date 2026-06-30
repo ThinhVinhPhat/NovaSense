@@ -5,7 +5,6 @@ import { TrustedBy } from '@/components/sections/TrustedBy'
 import { Features } from '@/components/sections/Features'
 import { ProductShowcase } from '@/components/sections/ProductShowcase'
 import { WhyTimeline } from '@/components/sections/WhyTimeline'
-import { Statistics } from '@/components/sections/Statistics'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { Pricing } from '@/components/sections/Pricing'
 import { FaqContact } from '@/components/sections/FaqContact'
@@ -20,7 +19,6 @@ export default function Home() {
         <Features />
         <ProductShowcase />
         <WhyTimeline />
-        <Statistics />
         <Testimonials />
         <Pricing />
         <FaqContact />

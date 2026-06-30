@@ -21,17 +21,17 @@ export function Hero() {
         <div className="relative grid items-center gap-12 lg:grid-cols-2">
           <div className="text-center lg:text-left">
             <Reveal>
-              <p className="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-(--color-accent)">
+              <p className="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-accent">
                 NovaSense AI
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="mt-4 font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-(--color-text-primary) sm:text-6xl">
+              <h1 className="mt-4 font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-text-primary sm:text-6xl">
                 The Future of <span className="text-gradient">Smart Living</span>
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mx-auto mt-6 max-w-xl text-lg text-(--color-text-secondary) lg:mx-0">
+              <p className="mx-auto mt-6 max-w-xl text-lg text-text-secondary lg:mx-0">
                 One AI hub that connects and orchestrates every device in your home — by voice or app. Calm, private, effortless.
               </p>
             </Reveal>

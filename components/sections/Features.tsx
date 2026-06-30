@@ -25,7 +25,7 @@ export function Features() {
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
-            Everything your home needs, in one brain
+            Everything your home needs <span className="text-gradient">In One Hub</span>
           </h2>
         </div>
         <Stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

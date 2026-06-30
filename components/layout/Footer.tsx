@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
-import { GitFork, Globe, Link2 } from 'lucide-react'
+import { FaFacebookF, FaLinkedinIn, FaInstagram, FaXTwitter, FaYoutube, FaGithub } from 'react-icons/fa6'
 
 const columns = [
   {
@@ -23,9 +23,9 @@ const columns = [
 ]
 
 const socials = [
-  { label: 'GitHub', href: 'https://github.com', icon: GitFork },
-  { label: 'Facebook', href: 'https://facebook.com', icon: Globe },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: Link2 },
+  { label: 'GitHub', href: 'https://github.com/ThinhVinhPhat', icon: FaGithub },
+  { label: 'Facebook', href: 'https://www.facebook.com/phat.thinhvinh.7/', icon: FaFacebookF },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/th%C3%ACnh-v%C4%A9nh-ph%C3%A1t-aaa865338/', icon: FaLinkedinIn },
 ]
 
 export function Footer() {
