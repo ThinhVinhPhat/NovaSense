@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { Heart, ShoppingCart } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { GlassCard } from '@/components/ui/GlassCard'
@@ -10,7 +11,9 @@ import { useToast } from '@/components/ui/Toast'
 import { DeviceMock, type DeviceView, type DeviceTier } from '@/components/ui/DeviceMock'
 import { productVariants, type ProductVariant } from '@/content/products'
 import { useCart } from '@/store/cart'
-import { ShoppingCart } from 'lucide-react'
+import { useWishlist } from '@/store/wishlist'
+import { useRecentlyViewed } from '@/store/recentlyViewed'
+import { useShowcase } from '@/store/showcase'
 
 const views: { key: DeviceView; label: string }[] = [
   { key: 'front', label: 'Front' },
@@ -30,11 +33,23 @@ export function ProductShowcase() {
   const reduced = useReducedMotion()
   const { addItem } = useCart()
   const { toast } = useToast()
+  const { toggle: toggleWishlist, has: inWishlist } = useWishlist()
+  const { add: addRecentlyViewed } = useRecentlyViewed()
+  const { requestedVariantId, clearRequest } = useShowcase()
   const [view, setView] = useState<DeviceView>('front')
-  const [selectedId, setSelectedId] = useState<string>(productVariants[0]!.id)
+  const [localSelectedId, setLocalSelectedId] = useState<string>(productVariants[0]!.id)
 
-  const selected: ProductVariant = productVariants.find((v) => v.id === selectedId) ?? productVariants[0]!
+  const activeId = requestedVariantId ?? localSelectedId
+  const selected: ProductVariant = productVariants.find((v) => v.id === activeId) ?? productVariants[0]!
   const tier: DeviceTier = selected.name.includes('Pro') ? 'pro' : 'hub'
+  const wishlisted = inWishlist(selected.id)
+  const lastRecordedRef = useRef<string | null>(null)
+
+  useEffect(() => {
+    if (activeId === lastRecordedRef.current) return
+    const variant = productVariants.find((v) => v.id === activeId)
+    if (variant) { addRecentlyViewed(variant); lastRecordedRef.current = activeId }
+  }, [activeId, addRecentlyViewed])
 
   function handleAdd() {
     addItem(selected)
@@ -106,10 +121,10 @@ export function ProductShowcase() {
                   <button
                     key={v.id}
                     type="button"
-                    onClick={() => setSelectedId(v.id)}
-                    aria-pressed={selectedId === v.id}
+                    onClick={() => { clearRequest(); setLocalSelectedId(v.id) }}
+                    aria-pressed={activeId === v.id}
                     className={
-                      selectedId === v.id
+                      activeId === v.id
                         ? 'rounded-lg border border-(--color-accent) bg-(--color-accent)/10 px-3 py-2 text-left text-xs text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)'
                         : 'rounded-lg border border-(--color-glass-border) px-3 py-2 text-left text-xs text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)'
                     }
@@ -121,10 +136,24 @@ export function ProductShowcase() {
               </div>
             </div>
 
-            <Button className="mt-7 w-full" size="lg" onClick={handleAdd}>
-              <ShoppingCart size={18} />
-              Add to Cart
-            </Button>
+            <div className="mt-7 flex gap-3">
+              <Button className="flex-1" size="lg" onClick={handleAdd}>
+                <ShoppingCart size={18} />
+                Add to Cart
+              </Button>
+              <button
+                type="button"
+                aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                aria-pressed={wishlisted}
+                onClick={() => toggleWishlist(selected.id)}
+                className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-(--color-glass-border) transition-colors hover:border-(--color-accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)"
+              >
+                <Heart
+                  size={20}
+                  className={wishlisted ? 'fill-(--color-accent) text-(--color-accent)' : 'text-(--color-text-secondary)'}
+                />
+              </button>
+            </div>
 
             <ul className="mt-6 grid grid-cols-1 gap-2 border-t border-(--color-glass-border) pt-5 text-xs text-(--color-text-secondary) sm:grid-cols-2">
               {specStrip.map((s) => (

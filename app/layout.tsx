@@ -54,9 +54,12 @@ const jsonLd = {
     'AI-powered smart hub connecting lights, cameras, locks, and all IoT devices by voice or app.',
   brand: { '@type': 'Brand', name: 'NovaSense' },
   offers: {
-    '@type': 'Offer',
+    '@type': 'AggregateOffer',
     availability: 'https://schema.org/PreOrder',
     priceCurrency: 'USD',
+    lowPrice: 199,
+    highPrice: 299,
+    offerCount: 5,
   },
 }
 

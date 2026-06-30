@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { contactSchema } from '@/lib/validations'
+import { db } from '@/db'
+import { leads } from '@/db/schema'
 
 export async function POST(request: NextRequest) {
   let body: unknown
@@ -17,15 +19,17 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const { name, email, phone, message, _honey } = parsed.data
-  if (_honey) {
-    return NextResponse.json({ success: true, message: 'Message sent!' })
+  const { name, email, phone, message } = parsed.data
+
+  try {
+    await db.insert(leads).values({ name, email, phone: phone ?? null, message })
+  } catch (err) {
+    console.error('[contact] DB insert error:', err)
   }
 
   const webhookUrl = process.env.WEBHOOK_URL
   if (!webhookUrl) {
-    console.warn('[contact] WEBHOOK_URL not configured — skipping forward')
-    return NextResponse.json({ success: true, message: 'Message sent!' })
+    return NextResponse.json({ success: true, message: "Thanks — we'll be in touch!" })
   }
 
   try {

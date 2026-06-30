@@ -1,13 +1,23 @@
 'use client'
 
+import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { ShoppingCart, X, Plus, Minus, Trash2 } from 'lucide-react'
 import { useCart } from '@/store/cart'
 import { Button } from '@/components/ui/Button'
-import { useState } from 'react'
-import { createPortal } from 'react-dom'
 
 export function CartDrawer() {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => { setMounted(true) }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [open])
   const { items, count, total, updateQty, removeItem } = useCart()
 
   return (
@@ -24,7 +34,7 @@ export function CartDrawer() {
           </span>
         )}
       </button>
-      {open && createPortal(
+      {mounted && open && createPortal(
         <div className="fixed inset-0 z-60 flex justify-end">
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
@@ -59,7 +69,7 @@ export function CartDrawer() {
                       </div>
                       <div className="flex items-center gap-1">
                         <button
-                          onClick={() => updateQty(item.variant.id, item.qty - 1)}
+                          onClick={() => item.qty === 1 ? removeItem(item.variant.id) : updateQty(item.variant.id, item.qty - 1)}
                           aria-label="Decrease quantity"
                           className="rounded p-1 text-(--color-text-muted) hover:text-(--color-text-primary)"
                         >
