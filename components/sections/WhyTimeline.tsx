@@ -138,13 +138,8 @@ export function WhyTimeline() {
 
           <div className="sticky top-28">
             <motion.div
-              animate={{
-                y: [0, -12, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-              }}
+              animate={reduced ? false : { y: [0, -12, 0] }}
+              transition={{ duration: 6, repeat: Infinity }}
               className="relative"
             >
 

@@ -22,30 +22,27 @@ export function TrustedBy() {
       <div className="relative mt-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         {reduced ? (
           <Container>
-            <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
-              {trustedBrands.map((brand) => (
-                <li
-                  key={brand.name}
-                  className="text-(--color-text-muted) opacity-70 transition hover:text-(--color-text-secondary) hover:opacity-100"
-                >
-                  <brand.Icon size={30} role="img" aria-label={brand.name} />
+            <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+              {trustedBrands.map((name) => (
+                <li key={name} className="text-sm font-medium text-(--color-text-muted) opacity-70">
+                  {name}
                 </li>
               ))}
             </ul>
           </Container>
         ) : (
           <motion.ul
-            className="flex w-max items-center gap-16"
+            className="flex w-max items-center gap-12"
             animate={{ x: ['0%', '-50%'] }}
             transition={{ duration: 60, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}
           >
-            {loop.map((brand, i) => (
+            {loop.map((name, i) => (
               <li
-                key={`${brand.name}-${i}`}
+                key={`${name}-${i}`}
                 aria-hidden={i >= trustedBrands.length || undefined}
-                className="shrink-0 text-(--color-text-muted) opacity-60 transition hover:text-(--color-text-primary) hover:opacity-100"
+                className="shrink-0 whitespace-nowrap text-sm font-semibold tracking-wide text-(--color-text-muted) opacity-60 transition hover:text-(--color-text-primary) hover:opacity-100"
               >
-                <brand.Icon size={30} role="img" aria-label={brand.name} />
+                {name}
               </li>
             ))}
           </motion.ul>
