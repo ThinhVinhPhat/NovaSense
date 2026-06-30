@@ -28,21 +28,12 @@ export const metadata: Metadata = {
     title: 'NovaSense — The Future of Smart Living',
     description:
       'AI-powered smart hub that quietly orchestrates your entire home ecosystem.',
-    images: [
-      {
-        url: '/og-image.svg',
-        width: 1200,
-        height: 630,
-        alt: 'NovaSense Smart Hub',
-      },
-    ],
     siteName: 'NovaSense',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'NovaSense — The Future of Smart Living',
     description: 'AI-powered smart hub that quietly orchestrates your entire home ecosystem.',
-    images: ['/og-image.svg'],
   },
   robots: {
     index: true,
