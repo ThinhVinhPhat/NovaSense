@@ -1,13 +1,5 @@
 import { z } from 'zod'
 
-export const subscribeSchema = z.object({
-  email: z.string().email('Please enter a valid email address'),
-  name: z.string().max(100).optional(),
-  _honey: z.string().max(0, 'Bot detected').optional(),
-})
-
-export type SubscribeInput = z.infer<typeof subscribeSchema>
-
 export const contactSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100),
   email: z.string().email('Please enter a valid email address'),
@@ -17,3 +9,23 @@ export const contactSchema = z.object({
 })
 
 export type ContactInput = z.infer<typeof contactSchema>
+
+const trackBase = { path: z.string().max(500), ts: z.number().int().positive() }
+
+export const trackSchema = z.discriminatedUnion('type', [
+  z.object({ ...trackBase, type: z.literal('click'), label: z.string().max(200) }),
+  z.object({ ...trackBase, type: z.literal('scroll'), depth: z.number().int().min(0).max(100) }),
+])
+
+export type TrackInput = z.infer<typeof trackSchema>
+
+export const chatMessageSchema = z.object({
+  role: z.enum(['user', 'assistant']),
+  content: z.string().min(1).max(4000),
+})
+
+export const chatSchema = z.object({
+  messages: z.array(chatMessageSchema).min(1).max(20),
+})
+
+export type ChatMessage = z.infer<typeof chatMessageSchema>
