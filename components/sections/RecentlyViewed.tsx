@@ -64,7 +64,8 @@ export function RecentlyViewed() {
                   type="button"
                   onClick={() => {
                     requestVariant(item.id)
-                    document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' })
+                    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                    document.getElementById('showcase')?.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' })
                   }}
                   className="mt-1 text-left text-xs font-medium text-(--color-accent) hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent) rounded"
                 >

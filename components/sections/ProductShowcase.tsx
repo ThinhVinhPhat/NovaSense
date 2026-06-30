@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -43,10 +43,12 @@ export function ProductShowcase() {
   const selected: ProductVariant = productVariants.find((v) => v.id === activeId) ?? productVariants[0]!
   const tier: DeviceTier = selected.name.includes('Pro') ? 'pro' : 'hub'
   const wishlisted = inWishlist(selected.id)
+  const lastRecordedRef = useRef<string | null>(null)
 
   useEffect(() => {
+    if (activeId === lastRecordedRef.current) return
     const variant = productVariants.find((v) => v.id === activeId)
-    if (variant) addRecentlyViewed(variant)
+    if (variant) { addRecentlyViewed(variant); lastRecordedRef.current = activeId }
   }, [activeId, addRecentlyViewed])
 
   function handleAdd() {

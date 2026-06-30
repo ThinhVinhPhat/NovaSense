@@ -8,10 +8,15 @@ import { Button } from '@/components/ui/Button'
 
 export function CartDrawer() {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (!open) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
   }, [open])
   const { items, count, total, updateQty, removeItem } = useCart()
 
@@ -29,7 +34,7 @@ export function CartDrawer() {
           </span>
         )}
       </button>
-      {open && createPortal(
+      {mounted && open && createPortal(
         <div className="fixed inset-0 z-60 flex justify-end">
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
@@ -64,7 +69,7 @@ export function CartDrawer() {
                       </div>
                       <div className="flex items-center gap-1">
                         <button
-                          onClick={() => updateQty(item.variant.id, item.qty - 1)}
+                          onClick={() => item.qty === 1 ? removeItem(item.variant.id) : updateQty(item.variant.id, item.qty - 1)}
                           aria-label="Decrease quantity"
                           className="rounded p-1 text-(--color-text-muted) hover:text-(--color-text-primary)"
                         >
