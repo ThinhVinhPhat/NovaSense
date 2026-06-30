@@ -9,6 +9,7 @@ import { DeviceMock } from '@/components/ui/DeviceMock'
 import { DemoModal } from '@/components/ui/DemoModal'
 import { Reveal } from '@/components/motion/Reveal'
 import { Play, ShoppingBag } from 'lucide-react'
+import { trackClick } from '@/lib/analytics'
 
 export function Hero() {
   const [demoOpen, setDemoOpen] = useState(false)
@@ -38,12 +39,12 @@ export function Hero() {
             <Reveal delay={0.15}>
               <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
                 <Magnetic>
-                  <Button size="lg" onClick={() => { document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' }) }}>
+                  <Button size="lg" onClick={() => { trackClick('hero-buy-now'); document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' }) }}>
                     <ShoppingBag size={18} />
                     Buy Now
                   </Button>
                 </Magnetic>
-                <Button variant="secondary" size="lg" onClick={() => setDemoOpen(true)}>
+                <Button variant="secondary" size="lg" onClick={() => { trackClick('hero-watch-demo'); setDemoOpen(true) }}>
                   <Play size={18} />
                   Watch Demo
                 </Button>

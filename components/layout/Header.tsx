@@ -5,6 +5,7 @@ import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { CartDrawer } from '@/components/ecommerce/CartDrawer'
+import { trackClick } from '@/lib/analytics'
 
 const navLinks = [
   { href: '#features', label: 'Features' },
@@ -35,7 +36,7 @@ export function Header() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <CartDrawer />
-            <Button size="sm" className="hidden sm:inline-flex">
+            <Button size="sm" className="hidden sm:inline-flex" onClick={() => trackClick('header-pre-order')}>
               Pre-order
             </Button>
           </div>

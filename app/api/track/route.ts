@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...parsed.data, source: 'novasense-analytics' }),
+      signal: AbortSignal.timeout(4000),
     })
   } catch (err) {
     console.error('[track] webhook error:', err)
