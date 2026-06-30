@@ -19,10 +19,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const { name, email, phone, message, _honey } = parsed.data
-  if (_honey) {
-    return NextResponse.json({ success: true, message: 'Message sent!' })
-  }
+  const { name, email, phone, message } = parsed.data
 
   try {
     await db.insert(leads).values({ name, email, phone: phone ?? null, message })
