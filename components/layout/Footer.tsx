@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
-import { FaFacebookF, FaLinkedinIn, FaInstagram, FaXTwitter, FaYoutube, FaGithub } from 'react-icons/fa6'
+import { FaFacebookF, FaLinkedinIn, FaGithub } from 'react-icons/fa6'
 
 const columns = [
   {
