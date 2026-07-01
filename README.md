@@ -6,8 +6,8 @@ A premium brand landing page for NovaSense, an AI-powered smart-home hub.
 
 ## PageSpeed Insights (Mobile — measured 2026-06-30)
 
-- Performance: 88/100
-- Accessibility: 93/100
+- Performance: 90/100
+- Accessibility: 97/100
 - Best Practices: 100/100
 - SEO: 100/100
 
